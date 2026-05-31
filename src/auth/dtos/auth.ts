@@ -1,12 +1,22 @@
-// Interfaces que define os dados necessários para cada operação de autenticação no Controller
+// Modelos que definem os dados necessários para cada operação de autenticação no Controller
 
-export interface SignUpDto {
+import { IsEmail, IsNotEmpty } from "class-validator";
+
+export class SignUpDto {
+  @IsNotEmpty()
   name: string;
+
+  @IsEmail()
   email: string;
+
+  @IsNotEmpty()
   password: string;
 }
 
-export interface SignInDto {
+export class SignInDto {
+  @IsEmail()
   email: string;
+
+  @IsNotEmpty()
   password: string;
 }
